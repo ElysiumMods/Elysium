@@ -8,6 +8,8 @@ patchouli = "1.19.2-77-FABRIC"
 emi = "0.6.3+1.19.2"
 rei = "10.0.586"
 portinglib = "2.1.766+1.19.2"
+components = "5.1.0"
+cblock = "5.1.0"
 jei = "11.5.2.1007"
 
 [libraries]
@@ -20,6 +22,8 @@ jei_api_fabric = { module = "mezz.jei:jei-1.19.2-fabric-api", version.ref = "jei
 parchment = { module = "org.parchmentmc.data:parchment-1.19.2", version.ref = "parchment" }
 patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
 portinglib = { module = "io.github.fabricators_of_create.Porting-Lib:porting-lib", version.ref = "portinglib" }
+components = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-base", version.ref = "components" }
+cblock = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-block", version.ref = "cblock" }
 #quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
 quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
 

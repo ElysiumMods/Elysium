@@ -1,12 +1,10 @@
 package com.enderio.api.integration;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.common.util.NonNullConsumer;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
+import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
+import io.github.fabricators_of_create.porting_lib.util.NonNullConsumer;
 import org.jetbrains.annotations.Nullable;
+import org.quiltmc.loader.api.QuiltLoader;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -19,11 +17,11 @@ public class IntegrationWrapper<T extends Integration> {
 
     public IntegrationWrapper(String modid, Supplier<T> supplier) {
         this.modid = modid;
-        value = ModList.get().isLoaded(modid) ? supplier.get() : null;
+        value = QuiltLoader.isModLoaded(modid) ? supplier.get() : null;
         ifPresent(integration -> {
             integration.setModid(modid);
             IntegrationManager.addIntegration(integration);
-            integration.addEventListener(FMLJavaModLoadingContext.get().getModEventBus(), MinecraftForge.EVENT_BUS);
+            //integration.addEventListener(FMLJavaModLoadingContext.get().getModEventBus(), MinecraftForge.EVENT_BUS);
         });
     }
 

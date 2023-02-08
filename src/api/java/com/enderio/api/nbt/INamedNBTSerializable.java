@@ -1,7 +1,7 @@
 package com.enderio.api.nbt;
 
+import io.github.fabricators_of_create.porting_lib.extensions.INBTSerializable;
 import net.minecraft.nbt.Tag;
-import net.minecraftforge.common.util.INBTSerializable;
 
 /**
  * Makes an NBT serializable object have it's own name.

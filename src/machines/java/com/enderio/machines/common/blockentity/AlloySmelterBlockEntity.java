@@ -1,7 +1,6 @@
 package com.enderio.machines.common.blockentity;
 
 import com.enderio.EnderIO;
-import com.enderio.api.UseOnly;
 import com.enderio.api.capacitor.CapacitorModifier;
 import com.enderio.api.capacitor.QuadraticScalable;
 import com.enderio.api.io.energy.EnergyIOMode;
@@ -60,7 +59,6 @@ public class AlloySmelterBlockEntity extends PoweredCraftingMachine<AlloySmeltin
         private int burnTime;
         private int burnDuration;
         public static final SingleSlotAccess FUEL = new SingleSlotAccess();
-        @UseOnly(LogicalSide.CLIENT)
         private float clientBurnProgress;
 
         public Primitive(BlockEntityType<?> pType, BlockPos pWorldPosition, BlockState pBlockState) {

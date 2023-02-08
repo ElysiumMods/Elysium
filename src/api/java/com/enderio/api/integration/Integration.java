@@ -1,7 +1,5 @@
 package com.enderio.api.integration;
 
-import net.minecraftforge.eventbus.api.IEventBus;
-
 public abstract class Integration implements IntegrationMethods {
 
     private String modid;
@@ -22,6 +20,6 @@ public abstract class Integration implements IntegrationMethods {
         this.modid = modid;
     }
 
-    void addEventListener(IEventBus modEventBus, IEventBus forgeEventBus) {
-    }
+//    void addEventListener(IEventBus modEventBus, IEventBus forgeEventBus) {
+//    }
 }

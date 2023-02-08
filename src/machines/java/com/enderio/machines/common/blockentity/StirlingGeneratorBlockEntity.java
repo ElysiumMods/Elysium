@@ -1,6 +1,5 @@
 package com.enderio.machines.common.blockentity;
 
-import com.enderio.api.UseOnly;
 import com.enderio.api.capacitor.CapacitorModifier;
 import com.enderio.api.capacitor.FixedScalable;
 import com.enderio.api.capacitor.QuadraticScalable;
@@ -32,7 +31,6 @@ public class StirlingGeneratorBlockEntity extends PowerGeneratingMachineEntity {
     private int burnTime;
     private int burnDuration;
 
-    @UseOnly(LogicalSide.CLIENT)
     private float clientBurnProgress;
 
     public StirlingGeneratorBlockEntity(BlockEntityType<?> type, BlockPos worldPosition,

@@ -26,4 +26,8 @@ public interface IEntityStorage extends INamedNBTSerializable<Tag> {
      * Set the entity NBT.
      */
     void setStoredEntityData(StoredEntityData entity);
+
+    Tag serializeNBT();
+
+    void deserializeNBT(Tag nbt);
 }

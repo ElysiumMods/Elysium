@@ -1,12 +1,11 @@
 package com.enderio.api.io;
 
-import com.enderio.api.UseOnly;
 import com.enderio.api.capability.IEnderCapabilityProvider;
 import com.enderio.api.capability.ISideConfig;
+import io.github.fabricators_of_create.porting_lib.extensions.INBTSerializable;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.fml.LogicalSide;
+import org.quiltmc.loader.api.minecraft.ClientOnly;
 
 /**
  * IO Config defines how each side of a block interacts with other blocks.
@@ -54,6 +53,6 @@ public interface IIOConfig extends INBTSerializable<CompoundTag>, IEnderCapabili
     /**
      * Whether the IO overlay should be rendered.
      */
-    @UseOnly(LogicalSide.CLIENT)
+    @ClientOnly
     boolean renderOverlay();
 }

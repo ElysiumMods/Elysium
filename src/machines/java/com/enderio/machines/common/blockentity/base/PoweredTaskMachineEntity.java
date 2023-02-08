@@ -1,6 +1,5 @@
 package com.enderio.machines.common.blockentity.base;
 
-import com.enderio.api.UseOnly;
 import com.enderio.api.capacitor.ICapacitorScalable;
 import com.enderio.api.io.energy.EnergyIOMode;
 import com.enderio.core.common.sync.FloatDataSlot;
@@ -39,7 +38,6 @@ public abstract class PoweredTaskMachineEntity<T extends PoweredTask> extends Po
     /**
      * The task progress (client side)
      */
-    @UseOnly(LogicalSide.CLIENT)
     private float clientProgress;
 
     public PoweredTaskMachineEntity(ICapacitorScalable capacity, ICapacitorScalable transferRate, ICapacitorScalable usageRate,

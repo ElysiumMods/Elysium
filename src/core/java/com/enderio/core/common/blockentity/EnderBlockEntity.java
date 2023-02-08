@@ -1,6 +1,5 @@
 package com.enderio.core.common.blockentity;
 
-import com.enderio.api.UseOnly;
 import com.enderio.api.capability.IEnderCapabilityProvider;
 import com.enderio.core.common.sync.EnderDataSlot;
 import com.enderio.core.common.sync.SyncMode;
@@ -14,7 +13,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.profiling.jfr.Environment;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraftforge.common.util.LazyOptional;
 import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
-import org.quiltmc.loader.api.minecraft.DedicatedServerOnly;
 
 import java.util.*;
 
@@ -43,6 +40,8 @@ public class EnderBlockEntity extends BlockEntity {
     private final List<EnderDataSlot<?>> dataSlots = new ArrayList<>();
 
     private final List<EnderDataSlot<?>> clientDecidingDataSlots = new ArrayList<>();
+
+
 
     private final Map<Capability<?>, IEnderCapabilityProvider<?>> capabilityProviders = new HashMap<>();
 

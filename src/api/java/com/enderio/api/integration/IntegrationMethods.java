@@ -1,7 +1,6 @@
 package com.enderio.api.integration;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.data.event.GatherDataEvent;
 
 /**
  * These are all the methods a Integration can override or call.
@@ -9,8 +8,8 @@ import net.minecraftforge.data.event.GatherDataEvent;
  */
 public interface IntegrationMethods {
 
-    default void createData(GatherDataEvent event) {
-    }
+//    default void createData(GatherDataEvent event) {
+//    }
 
     /**
      * @param stack The ItemStack used to mine the block

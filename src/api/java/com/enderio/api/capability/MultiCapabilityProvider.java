@@ -41,7 +41,7 @@ public class MultiCapabilityProvider implements ICapabilitySerializable<Compound
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+    public <T> zz<T> getCapability(Capability<T> cap, @Nullable Direction side) {
         return capabilities
             .getOrDefault(cap, LazyOptional.empty())
             .cast();

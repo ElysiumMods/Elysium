@@ -46,6 +46,7 @@ repositories {
     }
     maven { url = "https://mvn.devos.one/snapshots/" }
     maven { url 'https://jitpack.io' } // mixin extras, porting lib requires it but doesn't add the maven repo?
+    maven { url = 'https://ladysnake.jfrog.io/artifactory/mods' }
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -65,6 +66,7 @@ dependencies {
         parchment("org.parchmentmc.data:parchment-1.19.2:2022.11.27@zip")
     }
 
+
     modRuntimeOnly libs.rei
     modCompileOnly libs.rei.api
 
@@ -78,6 +80,9 @@ dependencies {
     modImplementation libs.portinglib
     modImplementation libs.quilt.loader
     modImplementation libs.patchouli
+    modImplementation libs.components
+    modImplementation libs.cblock
+
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
     // Quilted Fabric API will automatically pull in the correct QSL version.
     modImplementation libs.quilted.fabric.api

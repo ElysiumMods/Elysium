@@ -1,6 +1,6 @@
 package com.enderio.api.capacitor;
 
-import net.minecraftforge.common.util.NonNullSupplier;
+import io.github.fabricators_of_create.porting_lib.util.NonNullSupplier;
 
 import java.util.function.Supplier;
 
