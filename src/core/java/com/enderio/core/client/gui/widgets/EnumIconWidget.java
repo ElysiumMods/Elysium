@@ -95,7 +95,7 @@ public class EnumIconWidget<T extends Enum<T> & IIcon, U extends Screen & IEnder
             selectNext(mouseButton != InputConstants.MOUSE_BUTTON_RIGHT);
         } else {
             isExpanded = true;
-            Minecraft.getInstance().pushGuiLayer(selection);
+            Minecraft.getInstance().gui.clear();
         }
     }
 
