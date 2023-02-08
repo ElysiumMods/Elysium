@@ -58,7 +58,7 @@ dependencies {
         officialMojangMappings()
     }*/
 
-    mappings loom.layered() {
+    mappings loom.layered {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-1.19.2:2022.11.27@zip")
     }
@@ -97,6 +97,7 @@ sourceSets {
     api
     core {
         compileClasspath += sourceSets.api.output
+        compileClasspath += main.compileClasspath
     }
     main {
         compileClasspath += sourceSets.api.output
@@ -128,6 +129,20 @@ tasks.withType(JavaCompile).configureEach {
 
 for (String set : subsets) {
     setupSourceSet(set)
+}
+
+loom {
+    mods {
+        enderio {
+            sourceSets.api
+            sourceSets.core
+            sourceSets.main
+
+            for (String set : subsets) {
+                sourceSets.getByName(set)
+            }
+        }
+    }
 }
 
 java {
@@ -177,6 +192,9 @@ def setupSourceSet(String name) {
     sourceSet.compileClasspath += sourceSets.api.output
     sourceSet.compileClasspath += sourceSets.main.output
     sourceSet.compileClasspath += sourceSets.core.output
+    sourceSet.compileClasspath += sourceSets.api.compileClasspath
+    sourceSet.compileClasspath += sourceSets.main.compileClasspath
+    sourceSet.compileClasspath += sourceSets.core.compileClasspath
 
     // Extend configurations
     setupExtraSourceSets(sourceSet)
