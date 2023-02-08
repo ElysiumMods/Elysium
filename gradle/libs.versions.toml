@@ -1,0 +1,32 @@
+[versions]
+# The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
+minecraft = "1.19.2"
+quilt_loader = "0.18.1-beta.72"
+parchment = "2022.11.27@zip"
+quilted_fabric_api = "4.0.0-beta.27+0.73.0-1.19.2"
+patchouli = "1.19.2-77-FABRIC"
+emi = "0.6.3+1.19.2"
+rei = "10.0.586"
+jei = "11.5.2.1007"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+rei = { module = "me.shedaniel:RoughlyEnoughItems-fabric", version.ref = "rei" }
+rei_api = { module = "me.shedaniel:RoughlyEnoughItems-api-fabric", version.ref = "rei" }
+jei = { module = "mezz.jei:jei-1.19.2-fabric", version.ref = "jei" }
+jei_api_common = { module = "mezz.jei:jei-1.19.2-common-api", version.ref = "jei" }
+jei_api_fabric = { module = "mezz.jei:jei-1.19.2-fabric-api", version.ref = "jei" }
+parchment = { module = "org.parchmentmc.data:parchment-1.19.2", version.ref = "parchment" }
+patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
+#quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
+quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
+
+quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
+quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
+
+# If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
+[bundles]
+quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
+
+[plugins]
+quilt_loom = { id = "org.quiltmc.loom", version = "1.0.+" }
