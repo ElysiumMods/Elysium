@@ -44,6 +44,8 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven { url = "https://mvn.devos.one/snapshots/" }
+    maven { url 'https://jitpack.io' } // mixin extras, porting lib requires it but doesn't add the maven repo?
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -73,6 +75,7 @@ dependencies {
     modCompileOnlyApi libs.jei.api.fabric
     modRuntimeOnly libs.jei
 
+    modImplementation libs.portinglib
     modImplementation libs.quilt.loader
     modImplementation libs.patchouli
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
@@ -94,7 +97,10 @@ processResources {
 }
 
 sourceSets {
-    api
+    api {
+        compileClasspath += sourceSets.api.output
+        compileClasspath += main.compileClasspath
+    }
     core {
         compileClasspath += sourceSets.api.output
         compileClasspath += main.compileClasspath

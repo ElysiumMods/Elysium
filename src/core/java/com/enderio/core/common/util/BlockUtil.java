@@ -1,5 +1,6 @@
 package com.enderio.core.common.util;
 
+import dev.architectury.event.events.common.BlockEvent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +23,8 @@ public final class BlockUtil {
     public static boolean removeBlock(Level level, Player player, ItemStack tool, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(level, pos, state, player);
-        MinecraftForge.EVENT_BUS.post(event);
+        //MinecraftForge.EVENT_BUS.post(event);
+
         if (event.isCanceled()) {
             return false;
         }

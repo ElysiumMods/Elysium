@@ -14,15 +14,18 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.profiling.jfr.Environment;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fml.LogicalSide;
+//import net.minecraftforge.common.capabilities.Capability;
+
+//import net.minecraftforge.common.util.LazyOptional;
+import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
+import org.quiltmc.loader.api.minecraft.DedicatedServerOnly;
 
 import java.util.*;
 
@@ -149,7 +152,7 @@ public class EnderBlockEntity extends BlockEntity {
     /**
      * Sync the BlockEntity to all tracking players.
      */
-    @UseOnly(LogicalSide.SERVER)
+    // TODO: Investigate; does this need to be run on integrated as well as dedicated? removed environment annotation for now
     private void sync() {
         ClientboundBlockEntityDataPacket fullUpdate = createUpdatePacket(true, SyncMode.WORLD);
         ClientboundBlockEntityDataPacket partialUpdate = getUpdatePacket();
@@ -177,7 +180,7 @@ public class EnderBlockEntity extends BlockEntity {
      * never call this on client
      * @return all ServerPlayers tracking this BlockEntity
      */
-    @UseOnly(LogicalSide.SERVER)
+    // TODO: again, logicalside.server
     private List<ServerPlayer> getTrackingPlayers() {
         return ((ServerChunkCache)level.getChunkSource()).chunkMap.getPlayers(new ChunkPos(worldPosition), false);
     }

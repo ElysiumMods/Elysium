@@ -7,6 +7,7 @@ quilted_fabric_api = "4.0.0-beta.27+0.73.0-1.19.2"
 patchouli = "1.19.2-77-FABRIC"
 emi = "0.6.3+1.19.2"
 rei = "10.0.586"
+portinglib = "2.1.766+1.19.2"
 jei = "11.5.2.1007"
 
 [libraries]
@@ -18,6 +19,7 @@ jei_api_common = { module = "mezz.jei:jei-1.19.2-common-api", version.ref = "jei
 jei_api_fabric = { module = "mezz.jei:jei-1.19.2-fabric-api", version.ref = "jei" }
 parchment = { module = "org.parchmentmc.data:parchment-1.19.2", version.ref = "parchment" }
 patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
+portinglib = { module = "io.github.fabricators_of_create.Porting-Lib:porting-lib", version.ref = "portinglib" }
 #quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
 quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
 
