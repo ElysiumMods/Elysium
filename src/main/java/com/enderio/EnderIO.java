@@ -13,6 +13,7 @@ import com.enderio.base.data.tags.EIOItemTagsProvider;
 import com.enderio.core.EnderCore;
 import com.enderio.core.common.network.CoreNetwork;
 import com.tterrag.registrate.Registrate;
+import io.github.fabricators_of_create.porting_lib.util.Lazy;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ForgeBlockTagsProvider;

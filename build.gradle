@@ -79,10 +79,13 @@ dependencies {
     modRuntimeOnly libs.jei
 
     modImplementation libs.portinglib
+    include libs.portinglib
     modImplementation libs.quilt.loader
     modImplementation libs.patchouli
     modImplementation libs.components
     modImplementation libs.cblock
+    modImplementation libs.registrate
+    include libs.registrate
 
     // QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
     // Quilted Fabric API will automatically pull in the correct QSL version.
