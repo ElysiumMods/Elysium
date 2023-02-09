@@ -5,6 +5,7 @@ import com.enderio.base.common.capability.AcceptingFluidItemHandler;
 import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.init.EIOFluids;
 import com.enderio.base.common.tag.EIOTags;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -63,9 +64,8 @@ public class LevitationStaffItem extends PoweredToggledItem {
         player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 1)); // TODO: An upgrade to make it faster?
     }
 
-    @Nullable
     @Override
-    public MultiCapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
+    public @Nullable ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
         provider.addSimple(ForgeCapabilities.FLUID_HANDLER_ITEM,
             new AcceptingFluidItemHandler(stack, 1000, EIOTags.Fluids.STAFF_OF_LEVITY_FUEL).getCapability(
                 ForgeCapabilities.FLUID_HANDLER_ITEM));

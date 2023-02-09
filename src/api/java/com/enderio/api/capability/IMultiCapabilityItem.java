@@ -1,22 +1,19 @@
 package com.enderio.api.capability;
 
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.extensions.IForgeItem;
 
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Implement for an item that should use the {@link MultiCapabilityProvider} when initializing capabilities.
  */
-public interface IMultiCapabilityItem extends IForgeItem {
+public interface IMultiCapabilityItem {
     @Nullable
-    @Override
-    default ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
+    default ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return initCapabilities(stack, nbt, new MultiCapabilityProvider());
     }
 
-    @Nullable
-    MultiCapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider);
+    @Nullable ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider);
 }

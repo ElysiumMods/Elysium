@@ -4,13 +4,12 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
+import io.github.fabricators_of_create.porting_lib.model.IQuadTransformer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Direction;
-import net.minecraftforge.client.model.IQuadTransformer;
 
-import static net.minecraftforge.client.model.IQuadTransformer.STRIDE;
-import static net.minecraftforge.client.model.IQuadTransformer.UV0;
+import static io.github.fabricators_of_create.porting_lib.model.IQuadTransformer.STRIDE;
 
 public class RenderUtil {
     /**
@@ -43,7 +42,7 @@ public class RenderUtil {
 
     public static float[] unpackVertices(int[] vertices, int vertexIndex, int position, int count) {
         float[] floats = new float[count];
-        int startIndex = vertexIndex * IQuadTransformer.STRIDE + position;
+        int startIndex = vertexIndex * STRIDE + position;
         for (int i = 0; i < count; i++) {
             floats[i] = Float.intBitsToFloat(vertices[startIndex + i]);
         }

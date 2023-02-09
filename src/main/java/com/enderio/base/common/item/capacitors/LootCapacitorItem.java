@@ -7,6 +7,7 @@ import com.enderio.base.common.capacitor.LootCapacitorData;
 import com.enderio.base.common.init.EIOCapabilities;
 import com.enderio.base.common.lang.EIOLang;
 import com.enderio.core.common.util.TooltipUtil;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -43,9 +44,8 @@ public class LootCapacitorItem extends Item implements IMultiCapabilityItem {
         });
     }
 
-    @Nullable
     @Override
-    public MultiCapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt, MultiCapabilityProvider provider) {
+    public @Nullable ComponentProvider initCapabilities(ItemStack stack, CompoundTag nbt, MultiCapabilityProvider provider) {
         provider.addSerialized(EIOCapabilities.CAPACITOR, LazyOptional.of(LootCapacitorData::new));
         return provider;
     }

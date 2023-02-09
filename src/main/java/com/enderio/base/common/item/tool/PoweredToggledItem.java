@@ -9,6 +9,7 @@ import com.enderio.base.common.lang.EIOLang;
 import com.enderio.core.client.item.IAdvancedTooltipProvider;
 import com.enderio.core.common.util.EnergyUtil;
 import com.enderio.core.common.util.TooltipUtil;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -103,9 +104,8 @@ public abstract class PoweredToggledItem extends Item implements IMultiCapabilit
         }
     }
 
-    @Nullable
     @Override
-    public MultiCapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
+    public @Nullable ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
         provider.addSerialized(EIOCapabilities.TOGGLED, LazyOptional.of(Toggled::new));
         provider.addSerialized("Energy", ForgeCapabilities.ENERGY, LazyOptional.of(() -> new EnergyStorage(getMaxEnergy())));
         return provider;

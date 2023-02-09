@@ -1,13 +1,12 @@
 package com.enderio.api.capability;
 
 import com.enderio.api.nbt.INamedNBTSerializable;
+import dev.onyxstudios.cca.api.v3.component.Component;
+import io.github.fabricators_of_create.porting_lib.extensions.INBTSerializable;
+import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.common.util.LazyOptional;
 
 import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
@@ -16,8 +15,8 @@ import java.util.Map;
 /**
  * Automatically combines multiple capabilities together; handling serialization too.
  */
-public class MultiCapabilityProvider implements ICapabilitySerializable<CompoundTag> {
-    private final Map<Capability<?>, LazyOptional<?>> capabilities;
+public class MultiCapabilityProvider  {
+    private final Map<Component, LazyOptional<?>> capabilities;
     private final Map<String, LazyOptional<? extends INBTSerializable<Tag>>> serializedCaps;
     private int serializedNameCounter = 0;
 
@@ -26,28 +25,26 @@ public class MultiCapabilityProvider implements ICapabilitySerializable<Compound
         serializedCaps = new HashMap<>();
     }
 
-    public <T> void addSimple(Capability<T> cap, LazyOptional<?> optional) {
+    public <T> void addSimple(Component cap, LazyOptional<?> optional) {
         capabilities.putIfAbsent(cap, optional);
     }
 
-    public <T extends INamedNBTSerializable<Tag>> void addSerialized(Capability<T> cap, LazyOptional<? extends T> optional) {
+    public <T extends INamedNBTSerializable<Tag>> void addSerialized(Component cap, LazyOptional<? extends T> optional) {
         capabilities.putIfAbsent(cap, optional);
         serializedCaps.putIfAbsent("pend_" + serializedNameCounter++, optional);
     }
 
-    public <T> void addSerialized(String serializedName, Capability<T> cap, LazyOptional<? extends INBTSerializable<Tag>> optional) {
+    public <T> void addSerialized(String serializedName, Component cap, LazyOptional<? extends INBTSerializable<Tag>> optional) {
         capabilities.putIfAbsent(cap, optional);
         serializedCaps.putIfAbsent(serializedName, optional);
     }
 
-    @Override
-    public <T> zz<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+    public LazyOptional<Object> getCapability(Component cap, @Nullable Direction side) {
         return capabilities
             .getOrDefault(cap, LazyOptional.empty())
             .cast();
     }
 
-    @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
 
@@ -59,7 +56,6 @@ public class MultiCapabilityProvider implements ICapabilitySerializable<Compound
         return tag;
     }
 
-    @Override
     public void deserializeNBT(CompoundTag nbt) {
         for (var entry : serializedCaps.entrySet()) {
             entry

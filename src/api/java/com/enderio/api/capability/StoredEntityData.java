@@ -1,11 +1,11 @@
 package com.enderio.api.capability;
 
+import io.github.fabricators_of_create.porting_lib.extensions.INBTSerializable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.common.util.INBTSerializable;
 
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ public class StoredEntityData implements INBTSerializable<Tag> {
 
     public static StoredEntityData of(LivingEntity entity) {
         StoredEntityData data = new StoredEntityData();
-        data.entityTag = entity.serializeNBT();
+//        data.entityTag = entity.serializeNBT();
         data.maxHealth = entity.getMaxHealth();
         return data;
     }

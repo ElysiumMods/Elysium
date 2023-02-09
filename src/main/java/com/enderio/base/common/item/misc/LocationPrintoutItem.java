@@ -7,6 +7,7 @@ import com.enderio.api.capability.MultiCapabilityProvider;
 import com.enderio.base.common.capability.CoordinateSelectionHolder;
 import com.enderio.base.common.init.EIOCapabilities;
 import com.enderio.base.common.menu.CoordinateMenu;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -109,9 +110,8 @@ public class LocationPrintoutItem extends Item implements IMultiCapabilityItem {
         return Component.literal("" + character).withStyle(ChatFormatting.GRAY).append(Component.literal("" + number).withStyle(ChatFormatting.GREEN));
     }
 
-    @Nullable
     @Override
-    public MultiCapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
+    public @Nullable ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
         provider.addSerialized(EIOCapabilities.COORDINATE_SELECTION_HOLDER, LazyOptional.of(CoordinateSelectionHolder::new));
         return provider;
     }

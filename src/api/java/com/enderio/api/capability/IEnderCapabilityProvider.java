@@ -1,9 +1,8 @@
 package com.enderio.api.capability;
 
+import dev.onyxstudios.cca.api.v3.component.Component;
 import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
 import net.minecraft.core.Direction;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -16,7 +15,7 @@ public interface IEnderCapabilityProvider<T> {
     /**
      * Get the capability type provided.
      */
-    Capability<T> getCapabilityType();
+    Component getCapabilityType();
 
     /**
      * Get a capability to access config from the given side.
