@@ -1,6 +1,7 @@
 package com.enderio;
 
 import com.enderio.base.common.config.BaseConfig;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.init.*;
 import com.enderio.base.common.item.tool.SoulVialItem;
 import com.enderio.base.common.lang.EIOLang;
@@ -17,7 +18,6 @@ import io.github.fabricators_of_create.porting_lib.util.Lazy;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ForgeBlockTagsProvider;
-import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,18 +28,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.loader.api.config.QuiltConfig;
+import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
-import java.io.IOException;
-import java.nio.file.Files;
-
-@Mod(EnderIO.MODID)
-public class EnderIO {
+//@Mod(EnderIO.MODID)
+public class EnderIO implements ModInitializer {
     // The Mod ID. This is stored in EnderCore as its the furthest source away but it ensures that it is constant across all source sets.
     public static final String MODID = EnderCore.MODID;
 
     private static final Lazy<Registrate> REGISTRATE = Lazy.of(() -> Registrate.create(MODID));
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+
+
 
     public static ResourceLocation loc(String path) {
         return new ResourceLocation(MODID, path);
@@ -49,18 +51,16 @@ public class EnderIO {
         return REGISTRATE.get();
     }
 
-    public EnderIO() {
+    public void onInitialize(ModContainer mod) {
         // Ensure the enderio config subdirectory is present.
-        try {
+        /*try {
             Files.createDirectories(FMLPaths.CONFIGDIR.get().resolve(MODID));
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
 
         // Register config files
-        var ctx = ModLoadingContext.get();
-        ctx.registerConfig(ModConfig.Type.COMMON, BaseConfig.COMMON_SPEC, "enderio/base-common.toml");
-        ctx.registerConfig(ModConfig.Type.CLIENT, BaseConfig.CLIENT_SPEC, "enderio/base-client.toml");
 
         // Setup core networking now
         CoreNetwork.networkInit();
