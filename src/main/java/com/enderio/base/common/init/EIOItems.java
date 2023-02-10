@@ -1,8 +1,8 @@
 package com.enderio.base.common.init;
 
 import com.enderio.EnderIO;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.capacitor.DefaultCapacitorData;
-import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.item.EIOCreativeTabs;
 import com.enderio.base.common.item.misc.LocationPrintoutItem;
 import com.enderio.base.common.item.capacitors.FixedCapacitorItem;
@@ -31,16 +31,13 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import me.alphamode.forgetags.Tags;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.ForgeTier;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Objects;
@@ -368,7 +365,7 @@ public class EIOItems {
         .tab(() -> EIOCreativeTabs.GEAR)
         .onRegister(item -> DarkSteelUpgradeRegistry
             .instance()
-            .addUpgradesForItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), EmpoweredUpgrade.NAME, SpoonUpgrade.NAME, DirectUpgrade.NAME,
+            .addUpgradesForItem(Objects.requireNonNull(Registry.ITEM.getKey(item)), EmpoweredUpgrade.NAME, SpoonUpgrade.NAME, DirectUpgrade.NAME,
                 ExplosiveUpgrade.NAME, ExplosivePenetrationUpgrade.NAME))
         .register();
 
@@ -377,7 +374,7 @@ public class EIOItems {
         .tab(() -> EIOCreativeTabs.GEAR)
         .onRegister(item -> DarkSteelUpgradeRegistry
             .instance()
-            .addUpgradesForItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), EmpoweredUpgrade.NAME, ForkUpgrade.NAME, DirectUpgrade.NAME))
+            .addUpgradesForItem(Objects.requireNonNull(Registry.ITEM.getKey(item)), EmpoweredUpgrade.NAME, ForkUpgrade.NAME, DirectUpgrade.NAME))
         .register();
 
     private static final String UPGRADE_TEXT = " Upgrade";
@@ -417,20 +414,20 @@ public class EIOItems {
         .register();
 
     public static final ItemEntry<DarkSteelUpgradeItem> DARK_STEEL_UPGRADE_SPOON = REGISTRATE
-        .item("dark_steel_upgrade_spoon", properties -> new DarkSteelUpgradeItem(properties, BaseConfig.COMMON.DARK_STEEL.SPOON_ACTIVATION_COST, SpoonUpgrade::new))
+        .item("dark_steel_upgrade_spoon", properties -> new DarkSteelUpgradeItem(properties, Configs.COMMON.darkSteel.upgrades.spoonActivationCost, SpoonUpgrade::new))
         .tab(() -> EIOCreativeTabs.GEAR)
         .lang("Spoon" + UPGRADE_TEXT)
         .register();
 
     public static final ItemEntry<DarkSteelUpgradeItem> DARK_STEEL_UPGRADE_FORK = REGISTRATE
-        .item("dark_steel_upgrade_fork", properties -> new DarkSteelUpgradeItem(properties, BaseConfig.COMMON.DARK_STEEL.FORK_ACTIVATION_COST, ForkUpgrade::new))
+        .item("dark_steel_upgrade_fork", properties -> new DarkSteelUpgradeItem(properties, Configs.COMMON.darkSteel.upgrades.forkActivationCost, ForkUpgrade::new))
         .tab(() -> EIOCreativeTabs.GEAR)
         .lang("Fork" + UPGRADE_TEXT)
         .register();
 
     public static final ItemEntry<DarkSteelUpgradeItem> DARK_STEEL_UPGRADE_DIRECT = REGISTRATE
         .item("dark_steel_upgrade_direct",
-            properties -> new DarkSteelUpgradeItem(properties, BaseConfig.COMMON.DARK_STEEL.DIRECT_ACTIVATION_COST, DirectUpgrade::new))
+            properties -> new DarkSteelUpgradeItem(properties, Configs.COMMON.darkSteel.upgrades.directActivationCost, DirectUpgrade::new))
         .tab(() -> EIOCreativeTabs.GEAR)
         .lang("Direct" + UPGRADE_TEXT)
         .register();

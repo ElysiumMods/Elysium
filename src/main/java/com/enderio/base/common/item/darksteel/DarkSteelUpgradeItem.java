@@ -17,7 +17,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
@@ -27,11 +26,11 @@ import java.util.function.Supplier;
 
 public class DarkSteelUpgradeItem extends Item implements IAdvancedTooltipProvider {
 
-    private final ForgeConfigSpec.ConfigValue<Integer> levelsRequired;
+    private final int levelsRequired;
 
     private final Supplier<? extends IDarkSteelUpgrade> upgrade;
 
-    public DarkSteelUpgradeItem(Properties pProperties, ForgeConfigSpec.ConfigValue<Integer> levelsRequired, Supplier<? extends IDarkSteelUpgrade> upgrade) {
+    public DarkSteelUpgradeItem(Properties pProperties, int levelsRequired, Supplier<? extends IDarkSteelUpgrade> upgrade) {
         super(pProperties.stacksTo(1));
         this.levelsRequired = levelsRequired;
         this.upgrade = upgrade;
@@ -57,9 +56,9 @@ public class DarkSteelUpgradeItem extends Item implements IAdvancedTooltipProvid
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
         if (!DarkSteelUpgradeRegistry.instance().hasUpgrade(stack)) {
-            if (pPlayer.experienceLevel >= levelsRequired.get() || pPlayer.isCreative()) {
+            if (pPlayer.experienceLevel >= levelsRequired || pPlayer.isCreative()) {
                 if (!pPlayer.isCreative()) {
-                    pPlayer.giveExperienceLevels(-levelsRequired.get());
+                    pPlayer.giveExperienceLevels(levelsRequired);
                 }
                 DarkSteelUpgradeRegistry.instance().writeUpgradeToItemStack(stack, upgrade.get());
                 pLevel.playSound(pPlayer, pPlayer.getOnPos(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, new Random().nextFloat() * 0.1F + 0.9F);
@@ -78,7 +77,7 @@ public class DarkSteelUpgradeItem extends Item implements IAdvancedTooltipProvid
             tooltips.add(component.copy().withStyle(ChatFormatting.GRAY));
         }
         if (!DarkSteelUpgradeRegistry.instance().hasUpgrade(itemStack)) {
-            tooltips.add(TooltipUtil.withArgs(EIOLang.DS_UPGRADE_XP_COST, levelsRequired.get()).withStyle(ChatFormatting.DARK_PURPLE));
+            tooltips.add(TooltipUtil.withArgs(EIOLang.DS_UPGRADE_XP_COST, levelsRequired).withStyle(ChatFormatting.DARK_PURPLE));
             tooltips.add(EIOLang.DS_UPGRADE_ACTIVATE.copy().withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         }
     }

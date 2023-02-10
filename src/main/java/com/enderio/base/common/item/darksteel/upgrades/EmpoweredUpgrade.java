@@ -1,12 +1,11 @@
 package com.enderio.base.common.item.darksteel.upgrades;
 
-import com.enderio.base.common.config.BaseConfig;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.lang.EIOLang;
 import com.enderio.core.common.util.TooltipUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.energy.EnergyStorage;
 
 import java.util.*;
@@ -18,9 +17,9 @@ public class EmpoweredUpgrade extends TieredUpgrade<EmpoweredUpgradeTier> {
 
     private static final Random RANDOM = new Random();
 
-    private final ForgeConfigSpec.ConfigValue<Integer> speedBoostWhenPowered = BaseConfig.COMMON.DARK_STEEL.EMPOWERED_EFFICIENCY_BOOST;
+    private final int speedBoostWhenPowered = Configs.COMMON.darkSteel.upgrades.empowered.efficiencyBoost;
 
-    private final ForgeConfigSpec.ConfigValue<Integer> powerUsePerDamagePoint = BaseConfig.COMMON.DARK_STEEL.EMPOWERED_ENERGY_PER_DAMAGE;
+    private final int powerUsePerDamagePoint = Configs.COMMON.darkSteel.upgrades.empowered.energyUsePerDamagePoint;
 
     private EnergyStorage storage;
 

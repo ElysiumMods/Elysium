@@ -2,10 +2,8 @@ package com.enderio.base.common.item.darksteel.upgrades;
 
 import com.enderio.api.capability.IDarkSteelUpgrade;
 import com.enderio.base.common.Configs;
-import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.lang.EIOLang;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.function.Supplier;
 
@@ -15,27 +13,27 @@ public enum EmpoweredUpgradeTier implements IUpgradeTier {
         Configs.COMMON.darkSteel.upgrades.empowered.damageAbsorptionChance_l1,
         Configs.COMMON.darkSteel.upgrades.empowered.activationCost_l1,
         EIOLang.DS_UPGRADE_EMPOWERED_I),
-    TWO(BaseConfig.COMMON.DARK_STEEL.EMPOWERED_MAX_ENERGY_II,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_DAMAGE_ABSORPTION_CHANCE_II,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_ACTIVATION_COST_II,
+    TWO(Configs.COMMON.darkSteel.upgrades.empowered.maxEnergy_l2,
+        Configs.COMMON.darkSteel.upgrades.empowered.damageAbsorptionChance_l2,
+        Configs.COMMON.darkSteel.upgrades.empowered.activationCost_l2,
         EIOLang.DS_UPGRADE_EMPOWERED_II),
-    THREE(BaseConfig.COMMON.DARK_STEEL.EMPOWERED_MAX_ENERGY_III,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_DAMAGE_ABSORPTION_CHANCE_III,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_ACTIVATION_COST_III,
+    THREE(Configs.COMMON.darkSteel.upgrades.empowered.maxEnergy_l3,
+        Configs.COMMON.darkSteel.upgrades.empowered.damageAbsorptionChance_l3,
+        Configs.COMMON.darkSteel.upgrades.empowered.activationCost_l3,
         EIOLang.DS_UPGRADE_EMPOWERED_III),
-    FOUR(BaseConfig.COMMON.DARK_STEEL.EMPOWERED_MAX_ENERGY_IV,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_DAMAGE_ABSORPTION_CHANCE_IV,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_ACTIVATION_COST_IV,
+    FOUR(Configs.COMMON.darkSteel.upgrades.empowered.maxEnergy_l4,
+        Configs.COMMON.darkSteel.upgrades.empowered.damageAbsorptionChance_l4,
+        Configs.COMMON.darkSteel.upgrades.empowered.activationCost_l4,
         EIOLang.DS_UPGRADE_EMPOWERED_IV);
 
     private final Supplier<IDarkSteelUpgrade> factory;
-    private final ForgeConfigSpec.ConfigValue<Integer> maxStorage;
-    private final ForgeConfigSpec.ConfigValue<Float> damageAbsorptionChance;
-    private final ForgeConfigSpec.ConfigValue<Integer> activationCost;
+    private final int maxStorage;
+    private final float damageAbsorptionChance;
+    private final int activationCost;
     private final Component displayName;
 
-    EmpoweredUpgradeTier(ForgeConfigSpec.ConfigValue<Integer> maxStorage, ForgeConfigSpec.ConfigValue<Float> damageAbsorptionChance,
-        ForgeConfigSpec.ConfigValue<Integer> activationCost, Component displayName) {
+    EmpoweredUpgradeTier(int maxStorage, float damageAbsorptionChance,
+        int activationCost, Component displayName) {
         this.maxStorage = maxStorage;
         this.damageAbsorptionChance = damageAbsorptionChance;
         this.activationCost = activationCost;
@@ -50,7 +48,7 @@ public enum EmpoweredUpgradeTier implements IUpgradeTier {
     }
 
     public float getDamageAbsorptionChance() {
-        return damageAbsorptionChance.get();
+        return damageAbsorptionChance;
     }
 
     public Supplier<IDarkSteelUpgrade> getFactory() {
@@ -62,7 +60,7 @@ public enum EmpoweredUpgradeTier implements IUpgradeTier {
         return ordinal();
     }
 
-    public ForgeConfigSpec.ConfigValue<Integer> getActivationCost() {
+    public int getActivationCost() {
         return activationCost;
     }
 

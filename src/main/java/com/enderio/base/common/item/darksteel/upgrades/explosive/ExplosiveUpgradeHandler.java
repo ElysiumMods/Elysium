@@ -1,5 +1,6 @@
 package com.enderio.base.common.item.darksteel.upgrades.explosive;
 
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.capability.DarkSteelUpgradeable;
 import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.item.darksteel.upgrades.SpoonUpgrade;
@@ -50,7 +51,7 @@ import java.util.Random;
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ExplosiveUpgradeHandler {
 
-    private static final ForgeConfigSpec.ConfigValue<Integer> EXPLOSIVE_BREAK_POWER_USE = BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_ENERGY_PER_EXPLODED_BLOCK;
+    private static final int EXPLOSIVE_BREAK_POWER_USE = Configs.COMMON.darkSteel.upgrades.explosive.explosiveEnergyPerBlock;
 
     private static final Random RAND = new Random();
 
@@ -92,7 +93,7 @@ public class ExplosiveUpgradeHandler {
             return false;
         }
         if (BlockUtil.removeBlock(level, player, itemStack, minePos)) {
-            EnergyUtil.extractEnergy(itemStack, EXPLOSIVE_BREAK_POWER_USE.get(),false);
+            EnergyUtil.extractEnergy(itemStack, EXPLOSIVE_BREAK_POWER_USE,false);
             if (RAND.nextFloat() < .3f) {
                 particles.add(minePos, ParticleTypes.LARGE_SMOKE);
             } else if (RAND.nextFloat() < .7f) {
