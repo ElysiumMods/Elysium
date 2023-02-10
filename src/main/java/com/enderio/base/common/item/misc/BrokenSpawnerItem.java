@@ -20,8 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.LazyOptional;
-
+import io.github.fabricators_of_create.porting_lib.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -75,7 +74,7 @@ public class BrokenSpawnerItem extends Item implements IMultiCapabilityItem {
     @Override
     public @Nullable ComponentProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt, MultiCapabilityProvider provider) {
         provider.addSerialized(EIOCapabilities.ENTITY_STORAGE, LazyOptional.of(EntityStorage::new));
-        return provider;
+        return (ComponentProvider) provider;
     }
 
     // endregion

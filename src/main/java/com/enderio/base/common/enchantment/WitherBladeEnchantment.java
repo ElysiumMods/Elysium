@@ -1,5 +1,6 @@
 package com.enderio.base.common.enchantment;
 
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.config.BaseConfig;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,12 +23,12 @@ public class WitherBladeEnchantment extends EIOBaseEnchantment {
 
     @Override
     public int getMaxCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.WITHERING_BLADE_MAX_COST.get();
+        return Configs.COMMON.enchantments.witheringBlade.maxCost;
     }
 
     @Override
     public int getMinCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.WITHERING_BLADE_MIN_COST.get();
+        return Configs.COMMON.enchantments.witheringBlade.minCost;
     }
 
     @Override

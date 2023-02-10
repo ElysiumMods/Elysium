@@ -1,6 +1,6 @@
 package com.enderio.base.common.item.tool;
 
-import com.enderio.base.common.config.BaseConfig;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.tag.EIOTags;
 import com.enderio.base.common.util.AttractionUtil;
 import net.minecraft.world.entity.Entity;
@@ -25,20 +25,20 @@ public class ElectromagnetItem extends PoweredToggledItem {
 
     @Override
     protected int getEnergyUse() {
-        return BaseConfig.COMMON.ITEMS.ELECTROMAGNET_ENERGY_USE.get();
+        return Configs.COMMON.items.electromagnet.energyUse;
     }
 
     @Override
     protected int getMaxEnergy() {
-        return BaseConfig.COMMON.ITEMS.ELECTROMAGNET_MAX_ENERGY.get();
+        return Configs.COMMON.items.electromagnet.maxEnergy;
     }
 
     private int getRange() {
-        return BaseConfig.COMMON.ITEMS.ELECTROMAGNET_RANGE.get();
+        return Configs.COMMON.items.electromagnet.range;
     }
 
     private int getMaxItems() {
-        return BaseConfig.COMMON.ITEMS.ELECTROMAGNET_MAX_ITEMS.get();
+        return Configs.COMMON.items.electromagnet.maxItems;
     }
 
     private boolean isBlacklisted(ItemEntity entity) {

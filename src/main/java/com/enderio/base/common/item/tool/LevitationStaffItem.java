@@ -1,8 +1,8 @@
 package com.enderio.base.common.item.tool;
 
 import com.enderio.api.capability.MultiCapabilityProvider;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.capability.AcceptingFluidItemHandler;
-import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.init.EIOFluids;
 import com.enderio.base.common.tag.EIOTags;
 import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
@@ -28,12 +28,12 @@ public class LevitationStaffItem extends PoweredToggledItem {
 
     @Override
     protected int getEnergyUse() {
-        return BaseConfig.COMMON.ITEMS.LEVITATION_STAFF_ENERGY_USE.get();
+        return Configs.COMMON.items.levitationStaff.energyUse;
     }
 
     @Override
     protected int getMaxEnergy() {
-        return BaseConfig.COMMON.ITEMS.LEVITATION_STAFF_MAX_ENERGY.get();
+        return Configs.COMMON.items.levitationStaff.maxEnergy;
     }
 
     @Override

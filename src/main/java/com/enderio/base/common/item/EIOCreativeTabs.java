@@ -21,7 +21,7 @@ public class EIOCreativeTabs extends CreativeModeTab {
     private final Supplier<Item> itemIcon;
 
     public EIOCreativeTabs(String name, Supplier<Item> itemIcon) {
-        super("enderio." + name);
+        super(CreativeModeTab.TABS.length + 1, "enderio." + name);
         this.itemIcon = itemIcon;
         EnderIO.registrate().addLang("itemGroup", EnderIO.loc(name), getEnglish(name));
     }

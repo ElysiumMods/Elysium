@@ -1,6 +1,7 @@
 package com.enderio.base.common.item.darksteel.upgrades.explosive;
 
 import com.enderio.api.capability.IDarkSteelUpgrade;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.item.darksteel.upgrades.IUpgradeTier;
 import net.minecraft.network.chat.Component;
@@ -13,24 +14,24 @@ import static com.enderio.base.common.lang.EIOLang.DS_UPGRADE_EXPLOSIVE_PENETRAT
 
 public enum ExplosivePenetrationUpgradeTier implements IUpgradeTier {
 
-    ONE(BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_PENETRATION_I, BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_PENETRATION_ACTIVATION_COST_I,
+    ONE(Configs.COMMON.darkSteel.upgrades.explosive.explosivePenetrationI, Configs.COMMON.darkSteel.upgrades.explosive.explosivePenetrationActivationCostI,
         DS_UPGRADE_EXPLOSIVE_PENETRATION_I),
-    TWO(BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_PENETRATION_II, BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_PENETRATION_ACTIVATION_COST_II,
+    TWO(Configs.COMMON.darkSteel.upgrades.explosive.explosivePenetrationII, Configs.COMMON.darkSteel.upgrades.explosive.explosivePenetrationActivationCostII,
         DS_UPGRADE_EXPLOSIVE_PENETRATION_II);
 
     private final Supplier<IDarkSteelUpgrade> factory;
-    private final ForgeConfigSpec.ConfigValue<Integer> magnitude;
-    private final ForgeConfigSpec.ConfigValue<Integer> activationCost;
+    private final int magnitude;
+    private final int activationCost;
     private final Component displayName;
 
-    ExplosivePenetrationUpgradeTier(ForgeConfigSpec.ConfigValue<Integer> magnitude, ForgeConfigSpec.ConfigValue<Integer> activationCost, Component displayName) {
+    ExplosivePenetrationUpgradeTier(int magnitude, int activationCost, Component displayName) {
         this.magnitude = magnitude;
         this.activationCost = activationCost;
         this.displayName = displayName;
         factory = () -> new ExplosivePenetrationUpgrade(this);
     }
 
-    public ForgeConfigSpec.ConfigValue<Integer> getMagnitude() {
+    public int getMagnitude() {
         return magnitude;
     }
 
@@ -38,7 +39,7 @@ public enum ExplosivePenetrationUpgradeTier implements IUpgradeTier {
         return factory;
     }
 
-    public ForgeConfigSpec.ConfigValue<Integer> getActivationCost() {
+    public int getActivationCost() {
         return activationCost;
     }
 

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
 
-@Mod.EventBusSubscriber(modid = EnderIO.MODID)
+//@Mod.EventBusSubscriber(modid = EnderIO.MODID)
 public class GrindingBallManager {
     private static final HashMap<Item, IGrindingBallData> itemToData = new HashMap<>();
     private static final HashMap<ResourceLocation, IGrindingBallData> idToData = new HashMap<>();

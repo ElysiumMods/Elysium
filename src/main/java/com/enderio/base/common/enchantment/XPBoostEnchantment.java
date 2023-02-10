@@ -1,6 +1,6 @@
 package com.enderio.base.common.enchantment;
 
-import com.enderio.base.common.config.BaseConfig;
+import com.enderio.base.common.Configs;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -18,12 +18,12 @@ public class XPBoostEnchantment extends EIOBaseEnchantment {
 
     @Override
     public int getMaxCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.XP_BOOST_MAX_COST_BASE.get() + BaseConfig.COMMON.ENCHANTMENTS.XP_BOOST_MAX_COST_MULT.get() * pLevel;
+        return Configs.COMMON.enchantments.xpBoost.maxCostBase + Configs.COMMON.enchantments.xpBoost.maxCostPerLevel * pLevel;
     }
 
     @Override
     public int getMinCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.XP_BOOST_MIN_COST_BASE.get() + BaseConfig.COMMON.ENCHANTMENTS.XP_BOOST_MIN_COST_MULT.get() * pLevel;
+        return Configs.COMMON.enchantments.xpBoost.minCostBase + Configs.COMMON.enchantments.xpBoost.minCostPerLevel * pLevel;
     }
 
     @Override

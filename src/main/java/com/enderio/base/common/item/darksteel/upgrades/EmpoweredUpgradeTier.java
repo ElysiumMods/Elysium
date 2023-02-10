@@ -1,6 +1,7 @@
 package com.enderio.base.common.item.darksteel.upgrades;
 
 import com.enderio.api.capability.IDarkSteelUpgrade;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.lang.EIOLang;
 import net.minecraft.network.chat.Component;
@@ -10,9 +11,9 @@ import java.util.function.Supplier;
 
 public enum EmpoweredUpgradeTier implements IUpgradeTier {
 
-    ONE(BaseConfig.COMMON.DARK_STEEL.EMPOWERED_MAX_ENERGY_I,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_DAMAGE_ABSORPTION_CHANCE_I,
-        BaseConfig.COMMON.DARK_STEEL.EMPOWERED_ACTIVATION_COST_I,
+    ONE(Configs.COMMON.darkSteel.upgrades.empowered.maxEnergy_l1,
+        Configs.COMMON.darkSteel.upgrades.empowered.damageAbsorptionChance_l1,
+        Configs.COMMON.darkSteel.upgrades.empowered.activationCost_l1,
         EIOLang.DS_UPGRADE_EMPOWERED_I),
     TWO(BaseConfig.COMMON.DARK_STEEL.EMPOWERED_MAX_ENERGY_II,
         BaseConfig.COMMON.DARK_STEEL.EMPOWERED_DAMAGE_ABSORPTION_CHANCE_II,

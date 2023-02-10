@@ -1,6 +1,6 @@
 package com.enderio.base.common.enchantment;
 
-import com.enderio.base.common.config.BaseConfig;
+import com.enderio.base.common.Configs;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
@@ -17,12 +17,12 @@ public class ShimmerEnchantment extends EIOBaseEnchantment {
 
     @Override
     public int getMaxCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.SHIMMER_MAX_COST.get();
+        return Configs.COMMON.enchantments.shimmer.maxCost;
     }
 
     @Override
     public int getMinCost(int pLevel) {
-        return BaseConfig.COMMON.ENCHANTMENTS.SHIMMER_MIN_COST.get();
+        return Configs.COMMON.enchantments.shimmer.minCost;
     }
 
     @Override

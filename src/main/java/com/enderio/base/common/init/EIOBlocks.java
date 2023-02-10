@@ -12,6 +12,7 @@ import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.*;
@@ -23,7 +24,6 @@ import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -328,7 +328,7 @@ public class EIOBlocks {
     }
 
     private static BlockEntry<SilentPressurePlateBlock> silentPressurePlateBlock(final PressurePlateBlock block) {
-        ResourceLocation upModelLoc = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+        ResourceLocation upModelLoc = Objects.requireNonNull(Registry.BLOCK.getKey(block));
         ResourceLocation downModelLoc = new ResourceLocation(upModelLoc.getNamespace(), upModelLoc.getPath() + "_down");
 
         BlockBuilder<SilentPressurePlateBlock, Registrate> bb = REGISTRATE.block("silent_" + upModelLoc.getPath(),
@@ -350,7 +350,7 @@ public class EIOBlocks {
     }
 
     private static BlockEntry<SilentWeightedPressurePlateBlock> silentWeightedPressurePlateBlock(WeightedPressurePlateBlock block) {
-        ResourceLocation upModelLoc = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+        ResourceLocation upModelLoc = Registry.BLOCK.getKey(block);
         ResourceLocation downModelLoc = new ResourceLocation(upModelLoc.getNamespace(), upModelLoc.getPath() + "_down");
 
         BlockBuilder<SilentWeightedPressurePlateBlock, Registrate> bb = REGISTRATE.block("silent_" + upModelLoc.getPath(),

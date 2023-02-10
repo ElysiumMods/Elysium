@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.ResourceLocationException;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -48,8 +49,7 @@ public class FireCraftingRecipe implements EnderRecipe<Container> {
     public List<Block> getBases() {
         List<Block> blocks = new ArrayList<>(bases);
         for (TagKey<Block> blockTagKey : baseTags) {
-            ITag<Block> tag = ForgeRegistries.BLOCKS.tags().getTag(blockTagKey);
-            blocks.addAll(tag.stream().toList());
+            blocks.addAll(Registry.BLOCK.getTag(blockTagKey).orElse(null).);
         }
         return blocks;
     }
@@ -114,7 +114,7 @@ public class FireCraftingRecipe implements EnderRecipe<Container> {
                             throw new ResourceLocationException("Missing block " + id + " for fire crafting recipe " + recipeId);
                         } else baseBlocks.add(block);
                     } else if (obj.has("tag")) {
-                        baseTags.add(BlockTags.create(new ResourceLocation(obj.get("tag").getAsString())));
+                        baseTags.add(TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(obj.get("tag").getAsString())));
                     } else {
                         throw new UnsupportedOperationException("Unknown block entry for fire crafting recipe " + recipeId);
                     }
@@ -135,7 +135,7 @@ public class FireCraftingRecipe implements EnderRecipe<Container> {
             try {
                 ResourceLocation lootTable = buffer.readResourceLocation();
                 List<Block> baseBlocks = buffer.readList(buf -> ForgeRegistries.BLOCKS.getValue(buf.readResourceLocation()));
-                List<TagKey<Block>> baseTags = buffer.readList(buf -> BlockTags.create(buf.readResourceLocation()));
+                List<TagKey<Block>> baseTags = buffer.readList(buf -> TagKey.create(Registry.BLOCK_REGISTRY, buf.readResourceLocation()));
                 List<ResourceLocation> dimensions = buffer.readList(FriendlyByteBuf::readResourceLocation);
                 return new FireCraftingRecipe(recipeId, lootTable, baseBlocks, baseTags, dimensions);
             } catch (Exception e) {

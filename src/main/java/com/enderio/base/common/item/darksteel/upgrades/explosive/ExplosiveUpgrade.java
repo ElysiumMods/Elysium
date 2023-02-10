@@ -22,7 +22,7 @@ public class ExplosiveUpgrade extends TieredUpgrade<ExplosiveUpgradeTier> {
     }
 
     public int getMagnitude() {
-        return tier.getMagnitude().get();
+        return tier.getMagnitude();
     }
 
     @Override

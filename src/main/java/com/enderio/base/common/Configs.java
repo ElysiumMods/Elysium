@@ -38,6 +38,7 @@ public class Configs {
             public static class PickaxeConfigs implements Section {
                 public final int speedBoostWhenObsidian = 50;
                 public final int useObsidianBreakSpeedAtHardness = 30;
+                public final int obsidianBreakPowerUse = 50;
             }
             public static class UpgradesConfigs implements Section {
                 public static class EmpoweredConfigs implements Section {
@@ -86,7 +87,7 @@ public class Configs {
                 public final int minCost = 15;
             }
             public static class Repellent implements Section {
-                public final int maxLel = 4;
+                public final int maxLevel = 4;
                 public final int maxCostBase = 10;
                 public final int maxCostPerLevel = 10;
                 public final int minCostBase = 10;

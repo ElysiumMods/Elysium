@@ -1,6 +1,7 @@
 package com.enderio.base.common.item.darksteel.upgrades.explosive;
 
 import com.enderio.api.capability.IDarkSteelUpgrade;
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.item.darksteel.upgrades.IUpgradeTier;
 import net.minecraft.network.chat.Component;
@@ -13,19 +14,19 @@ import static com.enderio.base.common.lang.EIOLang.DS_UPGRADE_EXPLOSIVE_II;
 
 public enum ExplosiveUpgradeTier implements IUpgradeTier {
 
-    ONE(BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_I,
-        BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_RADIUS_ACTIVATION_COST_I,
+    ONE(Configs.COMMON.darkSteel.upgrades.explosive.explosiveI,
+        Configs.COMMON.darkSteel.upgrades.explosive.explosiveActivationCostI,
         DS_UPGRADE_EXPLOSIVE_I),
-    TWO(BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_II,
-        BaseConfig.COMMON.DARK_STEEL.EXPLOSIVE_ACTIVATION_COST_II,
+    TWO(Configs.COMMON.darkSteel.upgrades.explosive.explosiveII,
+        Configs.COMMON.darkSteel.upgrades.explosive.explosiveActivationCostII,
         DS_UPGRADE_EXPLOSIVE_II);
 
     private final Supplier<IDarkSteelUpgrade> factory;
-    private final ForgeConfigSpec.ConfigValue<Integer> magnitude;
-    private final ForgeConfigSpec.ConfigValue<Integer> activationCost;
+    private final int magnitude;
+    private final int activationCost;
     private final Component displayName;
 
-    ExplosiveUpgradeTier(ForgeConfigSpec.ConfigValue<Integer> magnitude, ForgeConfigSpec.ConfigValue<Integer> activationCost,
+    ExplosiveUpgradeTier(int magnitude, int activationCost,
         Component displayName) {
         this.magnitude = magnitude;
         this.activationCost = activationCost;
@@ -33,7 +34,7 @@ public enum ExplosiveUpgradeTier implements IUpgradeTier {
         factory = () -> new ExplosiveUpgrade(this);
     }
 
-    public ForgeConfigSpec.ConfigValue<Integer> getMagnitude() {
+    public int getMagnitude() {
         return magnitude;
     }
 
@@ -52,7 +53,7 @@ public enum ExplosiveUpgradeTier implements IUpgradeTier {
         return displayName;
     }
 
-    public ForgeConfigSpec.ConfigValue<Integer> getActivationCost() {
+    public int getActivationCost() {
         return activationCost;
     }
 }

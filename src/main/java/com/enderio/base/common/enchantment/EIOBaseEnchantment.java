@@ -22,7 +22,7 @@ public class EIOBaseEnchantment extends Enchantment {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return super.canApplyAtEnchantingTable(stack) && enableFlag.get();
+        return super.canEnchant(stack) && enableFlag.get();
     }
 
     @Override

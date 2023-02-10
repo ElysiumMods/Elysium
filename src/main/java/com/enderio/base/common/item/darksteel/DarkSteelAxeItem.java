@@ -1,7 +1,7 @@
 package com.enderio.base.common.item.darksteel;
 
+import com.enderio.base.common.Configs;
 import com.enderio.base.common.capability.DarkSteelUpgradeable;
-import com.enderio.base.common.config.BaseConfig;
 import com.enderio.base.common.init.EIOItems;
 import com.enderio.base.common.item.darksteel.upgrades.EmpoweredUpgrade;
 import com.enderio.base.common.item.darksteel.upgrades.ForkUpgrade;
@@ -9,6 +9,8 @@ import com.enderio.base.common.lang.EIOLang;
 import com.enderio.core.common.util.BlockUtil;
 import com.enderio.core.common.util.EnergyUtil;
 import com.enderio.core.common.util.TooltipUtil;
+import io.github.fabricators_of_create.porting_lib.util.ToolAction;
+import io.github.fabricators_of_create.porting_lib.util.ToolActions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
@@ -25,8 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
 
 import java.util.*;
 
@@ -58,7 +58,7 @@ public class DarkSteelAxeItem extends AxeItem implements IDarkSteelItem {
                 collectTreeBlocks(pLevel, pPos, new HashSet<>(), chopCandidates, maxSearchSize, pState.getBlock());
                 chopCandidates.remove(pPos); // don't double harvest this guy
 
-                int energyPerBlock = BaseConfig.COMMON.DARK_STEEL.DARK_STEEL_AXE_ENERGY_PER_FELLED_LOG.get();
+                int energyPerBlock = Configs.COMMON.darkSteel.axe.energyUsePerFelledLog;
                 int maxBlocks = EnergyUtil.getEnergyStored(pStack)/energyPerBlock;
 
                 Collection<BlockPos> toChop = chopCandidates;
