@@ -6,6 +6,10 @@ import com.enderio.base.common.item.darksteel.upgrades.direct.DirectUpgradeLootM
 import com.enderio.base.common.loot.BrokenSpawnerLootModifier;
 import com.enderio.base.common.loot.CapacitorLootModifier;
 import com.mojang.serialization.Codec;
+import com.tterrag.registrate.fabric.RegistryObject;
+import dev.architectury.registry.registries.DeferredRegister;
+import io.github.fabricators_of_create.porting_lib.loot.IGlobalLootModifier;
+import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -14,11 +18,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static io.github.fabricators_of_create.porting_lib.PortingLibRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS;
+
 @SuppressWarnings("unused")
 public class EIOLootModifiers {
-    private final static DeferredRegister<Codec<? extends IGlobalLootModifier>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, EnderIO.MODID);
+    private final static DeferredRegister<Codec<? extends IGlobalLootModifier>> SERIALIZERS = DeferredRegister.create(DefaultedRegistry.LOOT_ITEM_REGISTRY.registry(), EnderIO.MODID);
 
-    private final static DeferredRegister<LootItemConditionType> CONDITIONS = DeferredRegister.create(Registry.LOOT_ITEM_REGISTRY, EnderIO.MODID);
+    private final static DeferredRegister<LootItemConditionType> CONDITIONS = DeferredRegister.create(Registry.LOOT_ITEM_REGISTRY., EnderIO.MODID);
 
     public static RegistryObject<Codec<CapacitorLootModifier>> CAPACITOR_SERIALIZER = SERIALIZERS.register("capacitor_loot", CapacitorLootModifier.CODEC);
     public static RegistryObject<Codec<BrokenSpawnerLootModifier>> BROKEN_SPAWNER_SERIALIZER = SERIALIZERS.register("broken_spawner", BrokenSpawnerLootModifier.CODEC);
@@ -27,7 +33,7 @@ public class EIOLootModifiers {
     public static RegistryObject<LootItemConditionType> DIRECT_UPGRADE_CONDITION = CONDITIONS.register("has_direct_upgrade", () -> DirectUpgradeLootCondition.HAS_DIRECT_UPGRADE);
 
     public static void register() {
-        IEventBus eventbus = FMLJavaModLoadingContext.get().getModEventBus();
+         //eventbus = FMLJavaModLoadingContext.get().getModEventBus();
         SERIALIZERS.register(eventbus);
         CONDITIONS.register(eventbus);
     }

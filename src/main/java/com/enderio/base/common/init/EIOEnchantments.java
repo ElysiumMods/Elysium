@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber
 public class EIOEnchantments {
     private static final Registrate REGISTRATE = EnderIO.registrate();
 
